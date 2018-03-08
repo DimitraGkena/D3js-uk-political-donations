@@ -20,8 +20,8 @@ var entityCentres = {
 		pub: {x: w / 1.8, y: h / 2.8},
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
-
-var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
+//p1: allazw ta xrwmata
+var fill = d3.scale.ordinal().range(["#A52A2A", "#A9A9A9", "#20B2AA"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
