@@ -5,7 +5,7 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var sound = new Audio("Click sound effect.mp3"); //vazw ton ixo
-var GooglePls = "https://www.google.gr/search?q=";  // anazitisi google
+var GooglePlus = "https://www.google.gr/search?q=";  // anazitisi google
 var radius = d3.scale.sqrt().range([10, 20]);
 
 var partyCentres = { 
@@ -103,7 +103,7 @@ function start() {
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout);
-		.on("click", function(d) { window.open(GooglePls + d.donor)});
+		.onclick ( "click", function(d) { window.open(GooglePlus + d.donor)});
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
