@@ -102,7 +102,7 @@ function start() {
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout);
-		
+		.on("click", clickCircle);
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
@@ -118,7 +118,14 @@ function start() {
 			.attr("r", function(d) { return d.radius; });
 }
 
+function clickCircle(d) {
+    googleSearch(d.donor);
+}
 
+
+function googleSearch(input) {
+    window.open('http://google.com/search?q=' +input);
+}
 
 function total() {
 
