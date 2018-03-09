@@ -5,7 +5,6 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var sound = new Audio("Click sound effect.mp3"); //vazw ton ixo
-var GooglePls = "http://www.google.com/search?q=";  
 var radius = d3.scale.sqrt().range([10, 20]);
 
 var partyCentres = { 
@@ -103,7 +102,6 @@ function start() {
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout);
-		.on("click", function(d) { window.open(GooglePls + d.donor)});
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
@@ -322,31 +320,6 @@ function display(data) {
 		.size([w, h]);
 
 	return start();
-}
-function mouseover(d, i) {
-	// tooltip popup
-	var mosie = d3.select(this);
-	var amount = mosie.attr("amount");
-	var donor = d.donor;
-	var party = d.partyLabel;
-	var entity = d.entityLabel;
-	var offset = $("svg").offset();
-	mosie.classed("active", true);
-	d3.select(".tooltip")
-  	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
-    .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
-		.html(infoBox)
-			.style("display","block");
-}
-
-
-function mouseout() {
-	
-		var mosie = d3.select(this);
-		mosie.classed("active", false);
-
-		d3.select(".tooltip")
-			.style("display", "none");
 }
 
 
