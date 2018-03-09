@@ -86,6 +86,28 @@ function transition(name) {
 		return fundsType();
 	}
 
+function display(data) {
+    maxVal = d3.max(data, function (d) {
+        return d.amount;
+    });
+    var radiusScale = d3.scale.sqrt().domain([0, maxVal]).range([10, 20]);
+	
+  data.forEach(function (d) {
+        var y = radiusScale(d.amount);
+        var node = {
+            radius: radiusScale(d.amount) / 5,
+            value: d.amount,
+            donor: d.donor,
+            party: d.party,
+            partyLabel: d.partyname,
+            entity: d.entity,
+            entityLabel: d.entityname,
+            color: d.color,
+            x: Math.random() * w,
+            y: -y
+        };
+   nodes.push(node);
+});
 function start() {
 
 	node = nodeGroup.selectAll("circle")
