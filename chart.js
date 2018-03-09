@@ -123,8 +123,8 @@ function clickCircle(d) {
 }
 
 
-function googleSearch(input) {
-    window.open('http://google.com/search?q=' +input);
+function googleSearch(d.donor) {
+    window.open('http://google.com/search?q=' +d.donor);
 }
 
 function total() {
