@@ -5,7 +5,7 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var sound = new Audio("Click sound effect.mp3"); //vazw ton ixo
-var GooglePls = "http://www.google.com/search?q=";   anazitisi google
+var GooglePls = "https://www.google.gr/search?q";  // anazitisi google
 var radius = d3.scale.sqrt().range([10, 20]);
 
 var partyCentres = { 
