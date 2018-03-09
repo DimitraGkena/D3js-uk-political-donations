@@ -5,6 +5,7 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var sound = new Audio("Click sound effect.mp3"); //vazw ton ixo
+var GooglePls = "http://www.google.com/search?q=";  
 var radius = d3.scale.sqrt().range([10, 20]);
 
 var partyCentres = { 
@@ -102,7 +103,7 @@ function start() {
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout);
-		.on("click", clickCircle);
+		.on("click", function(d) { window.open(GooglePls + d.donor)});
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
@@ -118,32 +119,9 @@ function start() {
 			.attr("r", function(d) { return d.radius; });
 }
 
-function mouseoverCircle(d) {
-   
-    var mosie = d3.select(this);
-    var amount = mosie.attr("amount");
-    var offset = $("svg").offset();
-    
-    mosie.classed("active", true);
-}
-
-function mouseoutCircle() {
-    /* no more tooltips */
-    var mosie = d3.select(this);
-    mosie.classed("active", false);
-    d3.select(".tooltip").style("display", "none"); 
-  
-}
 
 
-function clickCircle(d) {
-    googleSearch(d.donor);
-}
 
-
-function googleSearch(d.donor) {
-    window.open('http://google.com/search?q=' +d.donor);
-}
 
 function total() {
 
@@ -345,7 +323,6 @@ function display(data) {
 
 	return start();
 }
-
 function mouseover(d, i) {
 	// tooltip popup
 	var mosie = d3.select(this);
@@ -354,48 +331,24 @@ function mouseover(d, i) {
 	var party = d.partyLabel;
 	var entity = d.entityLabel;
 	var offset = $("svg").offset();
-	
-
-
-	// image url that want to check
-	var imageFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
-
-	
-	
-	// *******************************************
-	
-	
-	
-
-	
-
-	
-	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + imageFile + "' height='42' width='42' onError='this.src=\"https://github.com/favicon.ico\";'></span></p>" 	
-	
-	 							+ "<p> Recipient: <b>" + party + "</b></p>"
-								+ "<p> Type of donor: <b>" + entity + "</b></p>"
-								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
-	
-	
 	mosie.classed("active", true);
 	d3.select(".tooltip")
   	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
-	
-	
-	}
+}
+
 
 function mouseout() {
-	// no more tooltips
+	
 		var mosie = d3.select(this);
-
 		mosie.classed("active", false);
 
 		d3.select(".tooltip")
 			.style("display", "none");
-		}
+}
+
 
 $(document).ready(function() {
 		d3.selectAll(".switch").on("click", function(d) {
