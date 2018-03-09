@@ -5,7 +5,6 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var sound = new Audio("Click sound effect.mp3"); //vazw ton ixo
-// var GooglePlus = "https://www.google.gr/search?q=";   anazitisi google
 var radius = d3.scale.sqrt().range([10, 20]);
 
 var partyCentres = { 
@@ -86,28 +85,6 @@ function transition(name) {
 		return fundsType();
 	}
 
-function display(data) {
-    maxVal = d3.max(data, function (d) {
-        return d.amount;
-    });
-    var radiusScale = d3.scale.sqrt().domain([0, maxVal]).range([10, 20]);
-	
-  data.forEach(function (d) {
-        var y = radiusScale(d.amount);
-        var node = {
-            radius: radiusScale(d.amount) / 5,
-            value: d.amount,
-            donor: d.donor,
-            party: d.party,
-            partyLabel: d.partyname,
-            entity: d.entity,
-            entityLabel: d.entityname,
-            color: d.color,
-            x: Math.random() * w,
-            y: -y
-        };
-   nodes.push(node);
-});
 function start() {
 
 	node = nodeGroup.selectAll("circle")
@@ -141,13 +118,6 @@ function start() {
 			.attr("r", function(d) { return d.radius; });
 }
 
-function clickCircle(d) {
-    googleSearch(d.donor);
-}
-
-function googleSearch(itemToSearch) {
-    window.open('http://google.com/search?q=' + itemToSearch);
-}
 
 
 function total() {
