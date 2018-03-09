@@ -118,6 +118,24 @@ function start() {
 			.attr("r", function(d) { return d.radius; });
 }
 
+function mouseoverCircle(d) {
+   
+    var mosie = d3.select(this);
+    var amount = mosie.attr("amount");
+    var offset = $("svg").offset();
+    
+    mosie.classed("active", true);
+}
+
+function mouseoutCircle() {
+    /* no more tooltips */
+    var mosie = d3.select(this);
+    mosie.classed("active", false);
+    d3.select(".tooltip").style("display", "none"); 
+  
+}
+
+
 function clickCircle(d) {
     googleSearch(d.donor);
 }
