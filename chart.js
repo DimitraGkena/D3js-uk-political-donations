@@ -116,7 +116,8 @@ function start() {
 		//.style("opacity", 0.9)
 		.attr("r", 0)
 		.style("fill", function(d) { return fill(d.party); })
-		.on("mouseover", mouseover)
+		.on("mouseover", mouseover);
+		.on("click", function(d) { window.open(GoogleSearch + d.donor)});
 		.on("mouseout", mouseout);
 		// Alternative title based 'tooltips'
 		// node.append("title")
