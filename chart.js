@@ -138,13 +138,10 @@ function start() {
 function amountType() { //sinartisi gia to amount
 	force.gravity(0)
 		.friction(0.75)
-		.charge(function(d) { return - Math.pow(d.radius , 2) / 3})
-		.on("tick", all)
+		.charge(function(d) { return - Math.pow(d.radius , 2) / 2.5})
+		.on("tick", amounts)
 		.start();
 	
-	node.transition()
-		.duration(2500)
-		.attr("r", function(d) { return d.radius; });
 }
 
 
@@ -228,9 +225,12 @@ function moveToAmount(alpha) {
 		} else if (d.value <= 350000) { 
 			centreX = svgCentre.x + 150;
 			centreY = svgCentre.y ;
-		} else if (d.value <= 2000000){ 
+		} else if (d.value <= 200000){ 
 			centreX = svgCentre.x + 300;
 			centreY = svgCentre.y + 50;
+		} else if (d.value <=20000000 {
+			centreX = svgCentre.x + 500;
+			centreY = svgCentre.y + 100;
 		}
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
