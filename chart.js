@@ -423,7 +423,7 @@ function mouseover(d, i) {
 	
 	
 	//gia na akougontai oi plirofories tou kuklou
-	var msg = new SpeechSynthesisUtterance("The donator is " + donor + " and the amount he gave is " + amount + " british pounds");
+	var msg = new SpeechSynthesisUtterance("The donator " + donor + " gaves the amount of " + amount + " british pounds");
 	window.speechSynthesis.speak(msg);
 	
 	mosie.classed("active", true);
