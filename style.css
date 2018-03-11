@@ -43,27 +43,35 @@ li {
 #view-amount-type {
         height: 100%;
 }
-#amount1 {
-    left: 150px;
-    top: 230px;
+#Upto50000 {
+    left: 200px;
+    top: 200px;
     position: absolute;
 }
-#amount2 {
-    left: 425px;
-    top: 265px;
-    position: absolute; 
+
+#Upto500000 {
+    left: 500px;
+    top: 250px;
+    position: absolute;
 }
-#amount3 {
-    left: 700px;
+
+#Upto1000000 {
+    left: 750px;
     top: 300px;
-    position: absolute; 
-}
-#amount4 {
-    top: 120px;
-    left: 425px;
     position: absolute;
 }
-    
+
+#Upto5000000 {
+    left: 150px;
+    top: 750px;
+    position: absolute;
+}
+
+#Upto20000000 {
+    left: 700px;
+    top: 650px;
+    position: absolute;
+}
 
 /*  Public or private funds view */
 
