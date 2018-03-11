@@ -44,27 +44,28 @@ li {
         height: 100%;
 }
 #Upto50000 {
+    left: 500px;
     top: 55px;
 }
 
 #Upto500000 {
+    left: 500px;
     top: 205px;
-    text-align: right;
-    right: 0;
 }
 
 #Upto1000000 {
+    top: 450px;
     left: 200px;
 }
 
 #Upto5000000 {
+    left: 500px;
     top: 390px;
 }
 
 #Upto20000000 {
+    left: 500px;
     top: 530px;
-    text-align: right;
-    right: 0
 }
 
 /*  Public or private funds view */
