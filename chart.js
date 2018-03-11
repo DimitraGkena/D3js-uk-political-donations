@@ -118,6 +118,7 @@ function start() {
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout);
+		.on("click",googleSearch);
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
@@ -133,7 +134,12 @@ function start() {
 			.attr("r", function(d) { return d.radius; });
 }
 
-
+function googleSearch(donor,src){
+    var mosie = d3.select(this);
+    var donor = d.donor;
+    var url ='http://www.google.com/search?q=' + donor;
+    window.open(url,'_blank');
+}
 
 function amountType() { //sinartisi gia to amount
 	force.gravity(0)
@@ -423,7 +429,7 @@ function mouseover(d, i) {
 	
 	
 	//gia na akougontai oi plirofories tou kuklou
-	var msg = new SpeechSynthesisUtterance("The donator " + donor + " gaves the amount of " + amount + " british pounds");
+	var msg = new SpeechSynthesisUtterance("The donator " + donor + " gave the amount of " + amount + " british pounds");
 	window.speechSynthesis.speak(msg);
 	
 	mosie.classed("active", true);
