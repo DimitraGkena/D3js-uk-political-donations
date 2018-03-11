@@ -44,32 +44,32 @@ li {
         height: 100%;
 }
 #Upto50000 {
-    left: 200px;
+    left: -70px;
     top: 300px;
     position: absolute;
 }
 
 #Upto500000 {
     left: 500px;
-    top: 300px;
+    top: 400px;
     position: absolute;
 }
 
 #Upto1000000 {
-    left: 750px;
-    top: 350px;
+    left: 50px;
+    top: -250px;
     position: absolute;
 }
 
 #Upto5000000 {
-    left: -70px;
-    top: 300px;
+    left: -100px;
+    top: 100px;
     position: absolute;
 }
 
 #Upto20000000 {
-    left: 30px;
-    top: 350px;
+    left: 400px;
+    top: 100px;
     position: absolute;
 }
 
