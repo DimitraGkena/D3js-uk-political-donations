@@ -118,7 +118,8 @@ function start() {
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout);
-		// .on("click", function() { window.open('http://www.google.com/search?q=' + d.donor)});
+		/* .on("click", function() { window.open('http://www.google.com/search?q=' + d.donor)});
+		     h parapanw entoli afora sthn anazitisi google */
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
