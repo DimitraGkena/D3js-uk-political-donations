@@ -350,13 +350,11 @@ function mouseover(d, i) {
 	
 	
 
-	var newElem = document.createElement("img");
-    newElem.setAttribute("src","http://www.bizreport.com/2011/02/03/android-logo-200x200.jpg");
-    newElem.setAttribute("height","42");
-    newElem.setAttribute("width","42");
-    newElem.setAttribute("onerror",'this.src=\"https://github.com/favicon.ico\";');
-    document.getElementById("pictureReel").insertBefore(newElem,document.getElementById("pictureReel").firstChild);
-    newElem.src = imageFile;
+	var img = document.createElement("img");
+	img.src = imageFile;
+	img.width = 42;
+	img.height = 42;
+	document.body.appendChild(img);
 	
 	
 	}
