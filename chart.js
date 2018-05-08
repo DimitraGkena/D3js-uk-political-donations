@@ -484,3 +484,104 @@ function drawTotalPie() {
 				.reduce(function (acc, current) { return acc + current })}
         ];
 
+	
+	   // Party Ring
+    var g = piesvg
+        .data([partyData])
+        .append("g")
+        .attr("transform", "translate(" + (r + 60) + "," + (r + 30) + ")")
+
+    var arc = d3.svg.arc()
+        .outerRadius(r)
+        .innerRadius(2*r/3);
+
+    var pie = d3.layout.pie()
+        .value(function(d) { return d.value; });
+
+    var arcs = g.selectAll("g.slice")  
+        .data(pie)         
+        .enter()        
+        .append("g") 
+        .attr("class", "slice"); 
+
+    arcs.append("path")
+        .attr("fill", function(d, i) { return fill(i); } )
+        .attr("d", arc); 
+
+    arcs.append("text") 
+        .attr("transform", function(d) { 
+            //we have to make sure to set these before calling arc.centroid
+            d.innerRadius = 0;
+            d.outerRadius = r;
+            return "translate(" + [arc.centroid(d)[0], arc.centroid(d)[1] - 8] + ")"; 
+        })
+        .attr("text-anchor", "middle") 
+		.attr("class", "pie-label")
+        .text(function(d) {
+        	return d.data.label;
+        });  
+
+
+    arcs.append("text")  
+        .attr("transform", function(d) {   
+            d.innerRadius = 0;
+            d.outerRadius = r;
+            return "translate(" + [arc.centroid(d)[0], arc.centroid(d)[1] + 8] + ")";   
+        })
+        .attr("text-anchor", "middle")  
+        .attr("class", "pie-amount")
+        .text(function(d) {
+            return "£" + comma(d.data.value);
+        });
+
+
+
+    // Entity Ring
+    var g2 = piesvg
+        .data([entityData])
+        .append("g")
+        .attr("transform", "translate(" + (r + 60) + "," + (r + 30) + ")")
+
+    var arc2 = d3.svg.arc()  
+        .outerRadius(2*r/3)
+        .innerRadius(r/3);
+
+    var pie2 = d3.layout.pie()
+        .value(function(d) { return d.value; });
+
+    var arcs2 = g2.selectAll("g.slice")
+        .data(pie2) 
+        .enter()            
+        .append("g")           
+        .attr("class", "slice"); 
+
+    arcs2.append("path")
+        .attr("fill", function(d, i) { return fill2(i); } )
+        .attr("d", arc2);
+
+    arcs2.append("text") 
+        .attr("transform", function(d) {          
+            d.innerRadius = 0;
+            d.outerRadius = r;
+            return "translate(" + [arc2.centroid(d)[0], arc2.centroid(d)[1] - 8] + ")"; 
+        })
+        .attr("text-anchor", "middle")     
+        .attr("class", "pie-label")
+        .text(function(d) {
+            return d.data.label;
+        });        //get the label from our original data array
+
+
+    arcs2.append("text") 
+        .attr("transform", function(d) {    
+            d.innerRadius = 0;
+            d.outerRadius = r;
+            return "translate(" + [arc2.centroid(d)[0], arc2.centroid(d)[1] + 8] + ")";     
+        })
+        .attr("text-anchor", "middle")                          
+        .attr("class", "pie-amount")
+        .text(function(d) {
+            return "£" + comma(d.data.value);
+        });
+}
+
