@@ -23,6 +23,8 @@ var entityCentres = {
 	};
 
 var fill = d3.scale.ordinal().range(["#FF4500", "#800000", "#B0C4DE"]);
+var fill2 = d3.scale.ordinal().range(["#FE5841", "#23FE18", "#4B93EE", "#BE52B8","#CAEE2C"]);
+
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -32,6 +34,16 @@ var svg = d3.select("#chart").append("svg")
 	.attr("id", "svg")
 	.attr("width", w)
 	.attr("height", h);
+
+var svg = d3.select("#chart").append("svg")
+	.attr("id", "svg")
+	.attr("width", w)
+	.attr("height", h);
+
+var piesvg = d3.select("#pie-chart").append("svg")
+    .attr("id", "pie-svg")
+    .attr("width", w)
+    .attr("height", h);
 
 var nodeGroup = svg.append("g");
 
@@ -55,6 +67,18 @@ function transition(name) {
 		return total();
 		//location.reload();
 	}
+	if (name === "all-donations-pie") {
+        	$("#initial-content").fadeOut(250);
+        	$("#initial-content-pie").fadeIn(1000);
+        	$("#value-scale").fadeOut(250);
+        	$("#view-donor-type").fadeOut(250);
+        	$("#view-source-type").fadeOut(250);
+        	$("#view-party-type").fadeOut(250);
+        	$("#view-amount").fadeOut(250);
+        	$("#pie-chart").fadeIn(1000);
+        	$("#chart").fadeOut(250);
+        //location.reload();
+    	}
 	if (name === "group-by-party") {
 		sound.currentTime=0; // paizei o ixos
 		sound.play();
@@ -133,6 +157,7 @@ function start() {
 		node.transition()
 			.duration(2500)
 			.attr("r", function(d) { return d.radius; });
+	drawTotalPie();
 }
 
 
