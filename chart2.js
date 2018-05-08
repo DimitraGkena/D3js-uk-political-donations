@@ -173,13 +173,13 @@ function moveToCentre(alpha) {
 function moveToEnts(alpha) {
 	return function(d) {
 
-		if (d.perif === 'ΒΟΡΕΙΟΥ ΤΟΜΕΑ ΑΘΗΝΩΝ') {
+		if (d.perif === 'Γ‚ΓΓ‘Γ…Γ‰ΓΓ• Γ”ΓΓΓ…Γ ΓΓΓ‡ΓΓ™Γ') {
             centreX = 350;
             centreY = 200;
-		} else if (d.perif === 'ΔΥΤΙΚΟΥ ΤΟΜΕΑ ΑΘΗΝΩΝ') {
+		} else if (d.perif === 'Γ„Γ•Γ”Γ‰ΓΓΓ• Γ”ΓΓΓ…Γ ΓΓΓ‡ΓΓ™Γ') {
             centreX = 800;
             centreY = 300;
-        } else if (d.perif === 'ΚΕΝΤΡΙΚΟΥ ΤΟΜΕΑ ΑΘΗΝΩΝ') {
+        } else if (d.perif === 'ΓΓ…ΓΓ”Γ‘Γ‰ΓΓΓ• Γ”ΓΓΓ…Γ ΓΓΓ‡ΓΓ™Γ') {
             centreX = 320;
             centreY = 400;
         } else{
@@ -193,7 +193,7 @@ function moveToEnts(alpha) {
 
 function moveToFunds(alpha) {
 	return function(d) {
-		if (d.dimos !== 'ΑΘΗΝΑΙΩΝ') {
+		if (d.dimos !== 'ΓΓΓ‡ΓΓΓ‰Γ™Γ') {
             centreX = 350;
 			centreY = 300;
 		} else {
@@ -238,26 +238,26 @@ function collide(alpha) {
 
 function display(data) {
 
-    data = data.filter(function (d) { return d["ΝΟΜΑΡΧΙΑ"] === "ΑΘΗΝΩΝ" });
+    data = data.filter(function (d) { return d["ΓΓΓΓΓ‘Γ—Γ‰Γ"] === "ΓΓΓ‡ΓΓ™Γ" });
 
     data.forEach(function(d) {
-        d["ΠΛΗΘΟΣ ΕΚΛΟΓΕΩΝ"] = +d["ΠΛΗΘΟΣ ΕΚΛΟΓΕΩΝ"].replace(",","");
+        d["ΓΓ‹Γ‡ΓΓΓ“ Γ…ΓΓ‹ΓΓƒΓ…Γ™Γ"] = +d["ΓΓ‹Γ‡ΓΓΓ“ Γ…ΓΓ‹ΓΓƒΓ…Γ™Γ"].replace(",","");
     });
 
-	maxVal = d3.max(data, function(d) { return d["ΠΛΗΘΟΣ ΕΚΛΟΓΕΩΝ"]; });
+	maxVal = d3.max(data, function(d) { return d["ΓΓ‹Γ‡ΓΓΓ“ Γ…ΓΓ‹ΓΓƒΓ…Γ™Γ"]; });
 
 	var radiusScale = d3.scale.pow()
 		.domain([0, maxVal])
 			.range([0, 150]);
 
 	data.forEach(function(d, i) {
-		var y = radiusScale(d["ΠΛΗΘΟΣ ΕΚΛΟΓΕΩΝ"]);
+		var y = radiusScale(d["ΓΓ‹Γ‡ΓΓΓ“ Γ…ΓΓ‹ΓΓƒΓ…Γ™Γ"]);
 		var node = {
-				radius: radiusScale(d["ΠΛΗΘΟΣ ΕΚΛΟΓΕΩΝ"]) / 5,
-				value: d["ΠΛΗΘΟΣ ΕΚΛΟΓΕΩΝ"],
-                perif: d["ΠΕΡΙΦΕΡΕΙΑΚΗ ΕΝΟΤΗΤΑ"],
-                dimos: d["ΔΗΜΟΣ (Καλλικράτειος)"],
-                diamerisma: d["ΕΚΛΟΓΙΚΟ ΔΙΑΜΕΡΙΣΜΑ"],
+				radius: radiusScale(d["ΓΓ‹Γ‡ΓΓΓ“ Γ…ΓΓ‹ΓΓƒΓ…Γ™Γ"]) / 5,
+				value: d["ΓΓ‹Γ‡ΓΓΓ“ Γ…ΓΓ‹ΓΓƒΓ…Γ™Γ"],
+                perif: d["ΓΓ…Γ‘Γ‰Γ–Γ…Γ‘Γ…Γ‰ΓΓΓ‡ Γ…ΓΓΓ”Γ‡Γ”Γ"],
+                dimos: d["Γ„Γ‡ΓΓΓ“ (ΓΓ΅Γ«Γ«Γ©ΓªΓ±ΓΓ΄Γ¥Γ©Γ―Γ²)"],
+                diamerisma: d["Γ…ΓΓ‹ΓΓƒΓ‰ΓΓ Γ„Γ‰ΓΓΓ…Γ‘Γ‰Γ“ΓΓ"],
 				x: Math.random() * w,
 				y: -y
       };
@@ -281,11 +281,11 @@ function mouseover(d, i) {
 	var offset = $("svg").offset();
 
 	
-	var infoBox = "<p> Περιφερειακή ενότητα: <b>" + d.perif + "</b> " +  "</p>"
+	var infoBox = "<p> ΓΓ¥Γ±Γ©Γ¶Γ¥Γ±Γ¥Γ©Γ΅ΓªΓ Γ¥Γ­ΓΌΓ΄Γ§Γ΄Γ΅: <b>" + d.perif + "</b> " +  "</p>"
 	
-	 							+ "<p> Δήμος: <b>" + d.dimos + "</b></p>"
-                                + "<p> Εκλ.διαμ.: <b>" + d.diamerisma + "</b></p>"
-								+ "<p> Πλήθος εκλογέων: <b>" + amount + "</b></p>";
+	 							+ "<p> Γ„ΓΓ¬Γ―Γ²: <b>" + d.dimos + "</b></p>"
+                                + "<p> Γ…ΓªΓ«.Γ¤Γ©Γ΅Γ¬.: <b>" + d.diamerisma + "</b></p>"
+								+ "<p> ΓΓ«ΓΓ¨Γ―Γ² Γ¥ΓªΓ«Γ―Γ£ΓΓΉΓ­: <b>" + amount + "</b></p>";
 	
 	
 	mosie.classed("active", true);
@@ -298,7 +298,7 @@ function mouseover(d, i) {
 	responsiveVoice.speak(amount + " voters");
 
 	var oldHtml = $("#mouse-visits").html();
-	var htmlToAdd = "<div>Εκλ.Διαμ. " + d.diamerisma +": "+ amount + "</div>"
+	var htmlToAdd = "<div>Γ…ΓªΓ«.Γ„Γ©Γ΅Γ¬. " + d.diamerisma +": "+ amount + "</div>"
     $("#mouse-visits").html(htmlToAdd + oldHtml);
 
 	}
