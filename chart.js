@@ -341,13 +341,21 @@ function mouseover(d, i) {
 								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
 	
 	
+	
+	
+	
 	mosie.classed("active", true);
 	d3.select(".tooltip")
   	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
-	appendHistory(imageFile)
+	
+	var img = document.createElement("img");
+	img.src = imageFile;
+	img.width = 42;
+	img.height = 42;
+	document.body.appendChild(img);
 	
 	
 	}
@@ -371,28 +379,3 @@ $(document).ready(function() {
 
 });
 
-var histElement = document.getElementById("list");
-var newImgElement = document.createElement("IMG");
-var histElementNum = 0;
-var sizeOfImageHistoryBar = 7;
-function appendHistory(imagePath) {
-	var imgNode = new Image(50, 50);
-	imgNode.src = imagePath;
-	imgNode.style.marginLeft = "25px";
-	imgNode.style.marginBottom = "7px";
-	imgNode.style.marginTop = "8px";
-	// imgNode.style.margin.right = "25px";
-	imgNode.onclick = function () {
-		googleSearch(d.donor);
-	};
-
-	newImgElement.appendChild(imgNode);
-
-	if (histElementNum >= sizeOfImageHistoryBar) {
-		histElement.removeChild(histElement.childNodes[sizeOfImageHistoryBar - 1]); //remove last image
-	} else {
-		histElementNum = histElementNum + 1;
-	}
-
-	histElement.insertBefore(imgNode, histElement.childNodes[0]); //append new image
-}
