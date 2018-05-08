@@ -464,3 +464,23 @@ $(document).ready(function() {
 
 });
 
+
+function drawTotalPie() {
+
+	var r = 270;
+
+    var partyData = [
+    	{label:"Conservative", value: nodes
+				.filter(function (n) { return n.party == "con" })
+				.map(function (node) { return +node.value })
+				.reduce(function (acc, current) { return acc + current })},
+        {label:"Labour", value: nodes
+				.filter(function (n) { return n.party == "lab" })
+                .map(function (node) { return +node.value })
+				.reduce(function (acc, current) { return acc + current })},
+        {label:"Liberal", value: nodes
+				.filter(function (n) { return n.party == "lib" })
+                .map(function (node) { return +node.value })
+				.reduce(function (acc, current) { return acc + current })}
+        ];
+
